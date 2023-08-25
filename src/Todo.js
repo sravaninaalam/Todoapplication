@@ -55,35 +55,31 @@ const Todo = () => {
  useEffect(()=>{
      localStorage.setItem("mytodos",JSON.stringify(todos))
  },[todos])
-  return (
 
+return(
   <>
-    <div className='container pt-5'>
-       <div className='col-md-12'>
-         <div className='card' style={{background:"lightblue"}}>
-            <div className='card-body'>
-               <h1 className='card-title'>Make Your Plan Now</h1>
-                    <form onSubmit={formsubmit}>
-                      <input required type='text' placeholder='enter your note here' value={input} onChange={(e)=>setInput(e.target.value)}/>
-                      &nbsp;
-                      <button type='submit'>{isedit?"EDIT":"ADD"}</button>
-                       {/* <input type="submit" value="ADD" name="ADD"/> */}
-                    </form>
-                  
-                  {todos.map((item)=>
-                  <div key={item.id}>
-                     <br/> <h5>{item.name}  &nbsp;&nbsp; 
-                         &nbsp; <EditTwoToneIcon onClick={()=>editTodo(item.id)} style={{color:"blue",marginRight:"10%"}} className='float-end'/>
-                         &nbsp; <DeleteOutlinedIcon onClick={()=>deleteTodo(item.id)} style={{color:"red"}}className='float-end'/></h5>
-                  </div>
+    <div className='w-5/12 mx-auto my-20  bg-violet-300 shadow-lg rounded-md'>
+          <h1 className='font-bold font-serif text-center my-3 text-2xl text-orange-600'>Make Your Plan Now</h1>
+          <form onSubmit={formsubmit}>
+              <input required type='text' placeholder='enter note here' className='border border-black m-2 p-2 w-2/3 rounded-md'
+              value={input} onChange={(e)=>setInput(e.target.value)}/>
+              <button className='bg-blue-400 m-2 py-2 px-4 rounded-lg'>Add</button>
+          </form>
+         <div className='shadow-lg my-2 py-2'>
+              {todos.map((item)=>
+                        <div key={item.id}>
+                          <h5 className='text-xl my-2 ml-5'>{item.name} 
+                              <span className='text-blue-600 mx-2 float-right'><EditTwoToneIcon onClick={()=>editTodo(item.id)} /></span>
+                            <span className='text-red-600 mx-2 float-right'><DeleteOutlinedIcon 
+                            onClick={()=>deleteTodo(item.id)} /></span></h5>
+                        </div>
                    )}
-                   <br></br><button className='btn btn-danger' onClick={removeAll}>RemoveAll</button>
-             </div>
          </div>
-       </div>
+          <button className='p-2 my-5 outline outline-red-400 hover:bg-red-400 rounded-lg mx-20'
+          onClick={removeAll}>Remove All</button>
     </div>
-    </>
-  )
-}
+  </>
+)
+ }
 
 export default Todo
