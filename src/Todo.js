@@ -68,10 +68,10 @@ return(
          <div className='shadow-lg my-2 py-2'>
               {todos.map((item)=>
                         <div key={item.id}>
-                          <h5 className='text-xl my-2 ml-5'>{item.name} 
+                          <li className='text-xl my-2 ml-5'>{item.name} 
                               <span className='text-blue-600 mx-2 float-right'><EditTwoToneIcon onClick={()=>editTodo(item.id)} /></span>
                             <span className='text-red-600 mx-2 float-right'><DeleteOutlinedIcon 
-                            onClick={()=>deleteTodo(item.id)} /></span></h5>
+                            onClick={()=>deleteTodo(item.id)} /></span></li>
                         </div>
                    )}
          </div>
